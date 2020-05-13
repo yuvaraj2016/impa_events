@@ -34,28 +34,87 @@ https://templatemo.com/tm-503-newline
         </section>
 
         <section class="cd-hero">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <h3 class="navbar-brand" style="margin-top: 3px;">IMPA Events</h3>
+                   <!-- <a class="navbar-brand offset-11" href="#">IMPA Events</a>-->
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav ">
+                        <li class="selected p-5"><a href="{{ url('/') }}"><div class=""></div><h5>Welcome</h5></a></li>
+                        <li class=""><a href="#0"><div class=""></div><h5>About Us</h5></a></li>
+                      <!--  <li><a href="#0"><div class=""></div><h6>Featured</h6></a></li>-->
+                        <li><a href="#0"><div class=""></div><h5>Projects</h5></a></li>
+                        <li ><a href="{{ url('contact') }}"><div class=""></div><h5>Contact Us</h5></a></li>
+                    </ul>
+                    @if (Route::has('login'))
+                    <ul class="nav navbar-nav navbar-right" style="margin-right:50px;">
+                      @auth
 
-          <div class="cd-slider-nav">
+                      <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-user"></span> Home</a></li>
+                      <li class="nav-item dropdown">
+                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              {{ Auth::user()->name }} <span class="caret"></span>
+                          </a>
+
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{{ route('logout') }}"
+                                 onclick="event.preventDefault();
+                                               document.getElementById('logout-form').submit();">
+                                  {{ __('Logout') }}
+                              </a>
+
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                  @csrf
+                              </form>
+                          </div>
+                      </li>
+                      @else
+                     <!-- <li><a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>-->
+                      @if (Route::has('register'))
+                      <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                      @endif
+                      @endauth
+                      @endif
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+
+<!--old codes 2020-05-12-->
+
+        <!--  <div class="cd-slider-nav">
             <nav class="navbar navbar-inverse" style="height:300px;">
                 <div class="container">
                   <div class="navbar-header">
-                      <h3 style="color: white;margin-top:40px;">IMPA Events</h3>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <h3 style="color: white;margin-top:40px;">IMPA Events</h3>oldend-->
                    <!-- <a class="navbar-brand" href="#"><img class="img-fluid img-responsive" src="{{ url('img/IMPA_Logo.png') }}" style="text-align:center; max-width:100%;height:auto!important; padding-top:5px; text-align:center;"></a>-->
-                  </div>
+                  <!-- old</div>-->
                   {{-- <ul class="nav navbar-nav"> --}}
-                    <span class="cd-marker item-1"></span>
+                <!--old start    <span class="cd-marker item-1"></span>
               <ul nav navbar-nav>
                 <li class="selected"><a href="#0"><div class=""></div><h6>Welcome</h6></a></li>
                 <li><a href="#0"><div class=""></div><h6>About Us</h6></a></li>
                 <li><a href="#0"><div class=""></div><h6>Featured</h6></a></li>
                 <li><a href="#0"><div class=""></div><h6>Projects</h6></a></li>
-                <li><a href="#0"><div class=""></div><h6>Contact Us</h6></a></li>
+                <li><a href="#0"><div class=""></div><h6>Contact Us</h6></a></li> old end-->
               {{-- </ul> --}}
 
                     {{-- <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">Page 1</a></li>
                     <li><a href="#">Page 2</a></li>--}}
-                  </ul>
+               <!--old start   </ul>
                   @if (Route::has('login'))
                   <ul class="nav navbar-nav navbar-right" style="margin-right:50px;">
                     @auth
@@ -78,16 +137,16 @@ https://templatemo.com/tm-503-newline
                             </form>
                         </div>
                     </li>
-                    @else
+                    @else old end-->
                    <!-- <li><a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>-->
-                    @if (Route::has('register'))
+                  <!--  start @if (Route::has('register'))
                     <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     @endif
                     @endauth
                     @endif
                   </ul>
                 </div>
-              </nav>
+              </nav> ends-->
 
 
             {{-- <nav>
